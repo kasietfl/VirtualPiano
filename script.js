@@ -1,57 +1,54 @@
-let upBtn = document.getElementById("upper-case");
-let lowBtn = document.getElementById("lower-case");
-let propBtn = document.getElementById("proper-case");
-let sentBtn = document.getElementById("sentence-case");
-let saveBtn = document.getElementById("save-text-file");
-
-upBtn.addEventListener("click", function () {
-    document.querySelector("textarea").value = document.querySelector("textarea").value.toUpperCase();
-})
-
-lowBtn.addEventListener("click", function () {
-    document.querySelector("textarea").value = document.querySelector("textarea").value.toLowerCase();
-})
-
-propBtn.addEventListener("click", function () {
-    let text = document.querySelector("textarea").value;
-    let splitText = text.split(" ");
-    for (let i = 0; i < splitText.length; i++) {
-        splitText[i] = sentenceCase(splitText[i]);
+document.addEventListener("keydown", function (event) {
+    switch (event.key) {
+        case "a":
+            let audioA = new Audio("white_keys/A.mp3");
+            audioA.play();
+            break;
+        case "s":
+            let audioS = new Audio("white_keys/S.mp3");
+            audioS.play();
+            break;
+        case "d":
+            let audioD = new Audio("white_keys/D.mp3");
+            audioD.play();
+            break;
+        case "f":
+            let audioF = new Audio("white_keys/F.mp3");
+            audioF.play();
+            break;
+        case "g":
+            let audioG = new Audio("white_keys/G.mp3");
+            audioG.play();
+            break;
+        case "h":
+            let audioH = new Audio("white_keys/H.mp3");
+            audioH.play();
+            break;
+        case "j":
+            let audioJ = new Audio("white_keys/A.mp3");
+            audioJ.play();
+            break;
+        case "w":
+            let audioW = new Audio("black_keys/W.mp3");
+            audioW.play();
+            break;
+        case "e":
+            let audioE = new Audio("black_keys/E.mp3");
+            audioE.play();
+            break;
+        case "t":
+            let audioT = new Audio("black_keys/T.mp3");
+            audioT.play();
+            break;
+        case "y":
+            let audioY = new Audio("black_keys/Y.mp3");
+            audioY.play();
+            break;
+        case "u":
+            let audioU = new Audio("black_keys/U.mp3");
+            audioU.play();
+            break;
+        default:
+            console.log('Err');
     }
-    document.querySelector("textarea").value = splitText.join(" ");
-})
-
-sentBtn.addEventListener("click", function () {
-    let text = document.querySelector("textarea").value;
-    let splitSentence = text.split(". ");
-
-    for (let i = 0; i < splitSentence.length; i++) {
-        splitSentence[i] = sentenceCase(splitSentence[i]);
-        console.log(sentenceCase(splitSentence[i]));
-    }
-    document.querySelector("textarea").value = splitSentence.join(". ");
-})
-
-function sentenceCase(text) {
-    let up = text.slice(0, 1).toUpperCase();
-    let low = text.slice(1).toLowerCase();
-    return up.concat(low);
-}
-
-saveBtn.addEventListener("click", function () {
-    let text = document.querySelector("textarea").value;
-    download("text.txt", text);
-})
-
-function download(filename, text) {
-    let element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
-
-    element.style.display = 'none';
-    document.body.appendChild(element);
-
-    element.click();
-
-    document.body.removeChild(element);
-}
+});
